@@ -35,6 +35,5 @@ class String
     end
     return false
   end
-
   
 end

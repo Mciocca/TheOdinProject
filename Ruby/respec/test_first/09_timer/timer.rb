@@ -6,15 +6,10 @@ class Timer
   end
  
   def time_string
-    if self.seconds == 0
-      "00:00:00"
-    else
-      format(self.seconds)
-    end
+    format(self.seconds)
   end
 
   def format(seconds)
-   hours, minutes, new_seconds = " "
    time = convert_time(seconds)
    hours = format_time(time[:hours])
    minutes = format_time(time[:minutes])
@@ -23,8 +18,8 @@ class Timer
   end
 
   def convert_time(seconds)
-    time = {:hours   => 0,:minutes => 0,:seconds => 0}
-   (0...seconds).each do |s|
+    time = {:hours => 0,:minutes => 0,:seconds => 0}
+    (0...seconds).each do |s|
      time[:seconds] += 1
        if time[:seconds] == 60
          time[:minutes] += 1
