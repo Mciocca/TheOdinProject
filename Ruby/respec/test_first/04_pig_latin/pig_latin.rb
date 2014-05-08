@@ -36,24 +36,7 @@ def match_qu?
   return false
 end
 
-##methods that format the words
 def format_consonant_first
-  if !self[0].is_vowel? && !self[1].is_vowel? || self.match_qu?
-    self.multiple_cons_format
-  end  
-    self.single_con_format 
-end
-
-def single_con_format
-  arr = self.split('')
-  cons = arr[0]
-  arr.shift
-  arr << cons + 'ay'
-  arr.join('')
-end
-
-
-def multiple_cons_format
   arr = self.split('')
    arr.size.times do
     if !arr[0].is_vowel? || arr[0] == 'u'

@@ -14,7 +14,7 @@ class Timer
    hours = format_time(time[:hours])
    minutes = format_time(time[:minutes])
    new_seconds = format_time(time[:seconds])
-   return hours.to_s+":"+minutes.to_s+":"+new_seconds.to_s
+   return hours+":"+minutes+":"+new_seconds
   end
 
   def convert_time(seconds)
