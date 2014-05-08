@@ -25,7 +25,7 @@ describe Cipher do
     end
   end
 
-  describe " should save case" do
+  describe "should save case" do
     it "while translating" do
      @cipher.translate('What a string', 5).should == "Bmfy f xywnsl"
     end
@@ -34,6 +34,9 @@ describe Cipher do
   describe "should save punctuation" do
     it "while translating" do
       @cipher.translate('What a string!', 5).should == "Bmfy f xywnsl!"
+      @cipher.translate('What a string.', 5).should == "Bmfy f xywnsl."
+      @cipher.translate('What a string?', 5).should == "Bmfy f xywnsl?"
+      @cipher.translate('What\'s a string?', 5).should == "Bmfy'x f xywnsl?"
     end
   end
 

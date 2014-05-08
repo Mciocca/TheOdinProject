@@ -1,3 +1,4 @@
+##cipher the hard/dumb way!
 class Cipher
 
   def translate_letter(letter, number)
@@ -68,4 +69,6 @@ end
 
 cipher = Cipher.new
 
-p cipher.translate('What a string!', 25)
+p cipher.translate('What a string!', 5)
+
+

@@ -4,9 +4,9 @@ class Cipher
   trans = []
   string.each_byte do |byte|
     if byte.between?(65, 90)
-      trans << (byte+shift-65)%26 + 65
+      trans << (byte+shift-65) % 26 + 65
     elsif byte.between?(97,122)
-      trans << (byte+shift-97)%26 + 97
+      trans << (byte+shift-97) % 26 + 97
     else
       trans << byte
     end
