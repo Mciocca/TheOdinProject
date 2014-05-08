@@ -7,7 +7,7 @@ class Cipher
     return letter if index == nil
     if index+number > 25
       #wrap back to the beginning of the array, take in account of 0 index
-      changed = alpha[(index+number)-26]
+      changed = alpha[((index+number)-26)%26]
     else
       changed = alpha[(index+number)]
     end
@@ -68,5 +68,4 @@ end
 
 cipher = Cipher.new
 
-p cipher.translate('This code is ugly!!!!', 5)
-# not only is it ugly, but it doesn't work if shifting higher than 26
+p cipher.translate('What a string!', 25)

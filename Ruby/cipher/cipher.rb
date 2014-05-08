@@ -1,5 +1,5 @@
 class Cipher
-  
+
  def cipher(string,shift)
   trans = []
   string.each_byte do |byte|
@@ -22,4 +22,12 @@ end
 
 cipher = Cipher.new
 
-puts cipher.translate("What a string!", 5)
+puts cipher.translate("What a string!", 25)
+
+puts "Give me a string to translate!"
+string = gets.chomp
+
+puts "Give me a number to offset by!"
+num = gets.chomp.to_i
+
+puts cipher.translate(string, num)
