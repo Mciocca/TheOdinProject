@@ -13,27 +13,16 @@ end
 public
 ## methods that match rules
 def has_vowel_first?
-  if self[0].match(/[aeiou]/)
-    return true
-  else
-    return false
-  end
+  self[0].is_vowel?
 end
 
 def is_vowel?
-  if self.match(/[aeiou]/)
-    return true
-  else
-    return false
-  end
+  self.match(/[aeiou]/)
 end
 
 def match_qu?
   letters = self[0] + self[1]
-  if letters == 'qu'
-    return true
-  end
-  return false
+  letters == 'qu'
 end
 
 def format_consonant_first
