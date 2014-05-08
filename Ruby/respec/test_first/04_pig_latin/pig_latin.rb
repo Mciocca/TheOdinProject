@@ -15,12 +15,7 @@ end
 def is_vowel?
   self.match(/[aeiou]/)
 end
-
-def match_qu?
-  letters = self[0] + self[1]
-  letters == 'qu'
-end
-
+ 
 def format
   arr = self.split('')
    arr.size.times do
