@@ -1,10 +1,6 @@
 def translate(string)
   if string.split(' ').size < 2
-    if string.has_vowel_first?
-      string + 'ay'
-    else
-      string.format_consonant_first
-    end
+    string.format
   else
     string.translate_multiple_words
   end  
@@ -25,7 +21,7 @@ def match_qu?
   letters == 'qu'
 end
 
-def format_consonant_first
+def format
   arr = self.split('')
    arr.size.times do
     if !arr[0].is_vowel? || arr[0] == 'u'
