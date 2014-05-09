@@ -102,7 +102,7 @@ puts ary.my_count(2)
 puts "\n#my_map"
 multiply = Proc.new { |i| i*i } 
 print (1..4).my_map(multiply)
-print (1..4).my_map {"tacos"}
+print (1..4).my_map(multiply) {"tacos"}
 
 puts "\n#my_inject"
 puts (5..10).my_inject { |sum, n| sum + n }
