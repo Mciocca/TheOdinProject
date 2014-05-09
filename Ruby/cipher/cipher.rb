@@ -18,6 +18,7 @@ class Cipher
     translated = cipher(string, shift)
     translated.map {|char| char.chr }.join('')
   end
+  
 end
 
 cipher = Cipher.new

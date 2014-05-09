@@ -10,11 +10,11 @@ class Timer
   end
 
   def format(seconds)
-   time = convert_time(seconds)
-   hours = format_time(time[:hours])
-   minutes = format_time(time[:minutes])
-   new_seconds = format_time(time[:seconds])
-   return hours+":"+minutes+":"+new_seconds
+    time = convert_time(seconds)
+    hours = format_time(time[:hours])
+    minutes = format_time(time[:minutes])
+    new_seconds = format_time(time[:seconds])
+    return hours+":"+minutes+":"+new_seconds
   end
 
   def convert_time(seconds)
