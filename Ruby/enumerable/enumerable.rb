@@ -47,15 +47,16 @@ module Enumerable
     end
     i
   end
-
+  # Odin project map method takes a proc or a proc and a block
   def my_map(p = nil)
-    arr = []
-    self.my_each {|e| arr.push(p.call(e)) } unless p == nil
-    if proc !=nil and block_given?
-      self.my_each {|e| arr.push(yield(e)) }
+    if p.class == Proc
+      arr = []
+      self.my_each {|e| arr.push(p.call(e)) } unless p == nil
+      if p !=nil and block_given?
+        self.my_each {|e| arr.push(yield(e)) }
+      end
+      arr
     end
-      self.my_each {|e| arr.push(yield(e)) } unless p != nil
-    arr
   end
 
   def my_inject(num = nil)
@@ -99,7 +100,8 @@ puts ary.my_count{ |x| x%2==0 }
 puts ary.my_count(2)
 
 puts "\n#my_map"
-print (1..4).my_map { |i| i*i } 
+multiply = Proc.new { |i| i*i } 
+print (1..4).my_map(multiply)
 print (1..4).my_map {"tacos"}
 
 puts "\n#my_inject"
@@ -109,4 +111,5 @@ puts (5..10).my_inject(1) { |product, n| product * n }
   def multiple_els(array)
     return array.my_inject(1) {|product, n| product * n}
   end
+
 puts multiple_els([2,4,5]) #=> 40
