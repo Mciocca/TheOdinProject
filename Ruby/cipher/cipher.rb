@@ -15,20 +15,24 @@ class Cipher
  end
 
   def translate(string, shift)
-    translated = cipher(string, shift)
-    translated.map {|char| char.chr }.join('')
+    cipher(string, shift).map {|char| char.chr }.join('')
   end
   
 end
 
 cipher = Cipher.new
 
-puts cipher.translate("What a string!", 25)
+puts cipher.translate("What a string!", 5)
+##loop does not play well with rspec. comment out loop do, break,and loop end when running tests
+loop do
+  puts "\nType 'quit!' to exit program" 
+  puts "Give me a string to translate!"
+  string = gets.chomp
+  break if string == 'quit!'
 
-puts "Give me a string to translate!"
-string = gets.chomp
+  puts "Give me a number to offset by!"
+  num = gets.chomp.to_i
 
-puts "Give me a number to offset by!"
-num = gets.chomp.to_i
+  puts "Result : "+cipher.translate(string, num)
+end
 
-puts cipher.translate(string, num)

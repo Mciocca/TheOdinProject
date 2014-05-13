@@ -17,9 +17,9 @@ class Cipher
 
   def original_case(old, translated)
     if old == old.capitalize
-      return translated.capitalize
+      translated.capitalize
     else
-      return translated
+      translated
     end
   end
 
@@ -58,11 +58,7 @@ class Cipher
   end
   
   def translate(word, number)
-    if word.length == 1
-      translation = translate_letter(word, number)
-    else
-      translation = translate_words(word, number)
-    end
+    translate_words(word, number)
   end
 
 end

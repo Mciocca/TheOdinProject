@@ -43,10 +43,11 @@ module Enumerable
     elsif val == nil && block_given? 
       self.my_each {|e| i += 1 if yield(e) == true}
     else
-      self.my_each {|e| i+= 1 if val == e}
+      self.my_each {|e| i += 1 if val == e}
     end
     i
   end
+
   # Odin project map method takes a proc or a proc and a block
   def my_map(p = nil)
     if p.class == Proc
@@ -109,7 +110,7 @@ puts (5..10).my_inject { |sum, n| sum + n }
 puts (5..10).my_inject(1) { |product, n| product * n }
 
   def multiple_els(array)
-    return array.my_inject(1) {|product, n| product * n}
+    array.my_inject(1) {|product, n| product * n}
   end
 
 puts multiple_els([2,4,5]) #=> 40

@@ -4,19 +4,16 @@ class Timer
   def initialize(seconds = 0)
     @seconds = seconds
   end
- 
+   # formats the time into a string
   def time_string
-    format(self.seconds)
-  end
-
-  def format(seconds)
-    time = convert_time(seconds)
+    time = convert_time(self.seconds)
     hours = format_time(time[:hours])
     minutes = format_time(time[:minutes])
     new_seconds = format_time(time[:seconds])
-    return hours+":"+minutes+":"+new_seconds
+    "#{hours}:#{minutes}:#{new_seconds}"
   end
 
+  ##convert seconds to a useable hash
   def convert_time(seconds)
     time = {:hours => 0,:minutes => 0,:seconds => 0}
     (0...seconds).each do |s|
@@ -32,15 +29,11 @@ class Timer
      end 
     time
   end
-
+  #formats time to display as needed
   def format_time(num)
-    if num < 10
-      return "0#{num}"
-    elsif num == 0
-      return "00"
-    else
-      return num.to_s
-    end
+    return "0#{num}" if num < 10
+    return "00" if num == 0
+    num.to_s
   end
 
 end
