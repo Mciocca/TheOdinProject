@@ -78,7 +78,7 @@ module TicTacToe
       end
     end
 
-    def winner?(board,player)0
+    def winner?(board,player)
       return true if vertical_win(board,player)
       return true if horizontal_win(board,player)
       return true if diagonal_win(board,player)
