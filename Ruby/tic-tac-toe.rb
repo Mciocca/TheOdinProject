@@ -79,12 +79,12 @@ module TicTacToe
     end
 
     def winner?(board,player)
-      return true if vertical_win(board,player)
-      return true if horizontal_win(board,player)
-      return true if diagonal_win(board,player)
+      return true if vertical_win?(board,player)
+      return true if horizontal_win?(board,player)
+      return true if diagonal_win?(board,player)
     end
 
-    def horizontal_win(board,player)
+    def horizontal_win?(board,player)
       flag = false
       board.game_board.collect do |row|
        flag = true if row.all? {|e| e.value == player.symbol}
@@ -92,7 +92,7 @@ module TicTacToe
       flag
     end
 
-    def vertical_win(board,player)
+    def vertical_win?(board,player)
       flag = false
       board.game_board.transpose.collect do |row|
        flag = true if row.all? {|e| e.value == player.symbol}
@@ -100,9 +100,9 @@ module TicTacToe
       flag
     end
 
-    def diagonal_win(board,player) 
-      return true if [board.get_space(0,0), board.get_space(1,1), board.get_space(2, 2)].all? {|e| e.value == player.symbol}
-      return true if [board.get_space(0,2), board.get_space(1,1), board.get_space(2,0)].all?  {|e| e.value == player.symbol}
+    def diagonal_win?(board,player) 
+      return true if [board.get_space(0,0), board.get_space(1,1), board.get_space(2,2)].all? {|e| e.value == player.symbol}
+      return true if [board.get_space(0,2), board.get_space(1,1), board.get_space(2,0)].all? {|e| e.value == player.symbol}
     end
   #game end
   end
