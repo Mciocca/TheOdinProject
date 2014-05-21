@@ -23,7 +23,7 @@ module TicTacToe
     end
 
     def print
-      self.game_board.reverse_each {|row| puts row.map {|space| space.value}.to_s}
+      @game_board.reverse_each {|row| puts row.map {|space| space.value}.to_s}
     end
 
     def space_available?(x,y)
@@ -60,13 +60,14 @@ module TicTacToe
             puts "#{current_player.symbol} wins!"
             break
           end
+        break if draw?(board)  
         current_player == p1 ? current_player =  p2 : current_player = p1
       end
     end
 
     def player_turn(player, board)
       begin
-        puts "Please enter X and Y coordinates separated by a space.\nFor example '0 0' is the bottom left corner"
+        puts "Please enter X and Y coordinates separated by a space.\nFor example '0 0' is the bottom left corner."
         mark = gets.chomp.split(' ').map {|x| x.to_i}
         board.space_available?(mark[0], mark[1]) ? board.set_space(mark[0], mark[1], player.symbol)  : player_turn(player, board)
       rescue 
@@ -82,6 +83,15 @@ module TicTacToe
       return true if vertical_win?(board,player)
       return true if horizontal_win?(board,player)
       return true if diagonal_win?(board,player)
+    end
+
+    def draw?(board)
+      rows_filled = 0
+      board.game_board.collect {|row| rows_filled += 1 if row.all? {|e| e.value != ' ' } }
+      if rows_filled == 3
+        puts 'Draw!'
+        return true
+      end
     end
 
     def horizontal_win?(board,player)

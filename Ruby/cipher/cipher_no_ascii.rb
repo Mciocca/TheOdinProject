@@ -23,14 +23,6 @@ class Cipher
     end
   end
 
-  def translate_words(word,number)
-    if word.split(' ').length == 1
-      translate_single_word(word,number)
-    else
-      translate_multiple_words(word, number)
-    end
-  end
-
   def translate_multiple_words(words,number)
     words = words.split(' ')
     translation = []
@@ -45,20 +37,21 @@ class Cipher
   end
 
   def translate_single_word(word, number)
-    translation = []
     letters = word.split('')
-    letters.each {|letter| translation << translate_letter(letter, number) }
-    translation = translation.join('') 
+    translation = letters.map {|letter| translate_letter(letter, number) }
+    translation.join('') 
   end
 
   def make_alpha
-    alphabet = []
-    ('a'..'z').each {|letter| alphabet << letter}
-    alphabet
+    ('a'..'z').map {|letter| letter}
   end
   
   def translate(word, number)
-    translate_words(word, number)
+    if word.split(' ').length == 1
+      translate_single_word(word,number)
+    else
+      translate_multiple_words(word, number)
+    end
   end
 
 end

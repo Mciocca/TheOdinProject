@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>This is a web page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Welcome to the Viking Home Page</h1>
+  <div id = "secret"></div>
+
+  <script type="text/javascript">
+    el = document.getElementById('secret')
+    function changeBackground(){
+      var red = Math.ceil(Math.random() * 255);
+      var green = Math.ceil(Math.random() * 255);
+      var blue = Math.ceil(Math.random() * 255);
+      el.style.backgroundColor = "rgb("+red+","+green+","+blue+")"
+    }
+    el.addEventListener("mouseover", changeBackground, false)
+  </script>
+
+</body>
+</html>

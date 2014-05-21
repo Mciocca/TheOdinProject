@@ -6,7 +6,7 @@ describe Cipher do
     @cipher = Cipher.new
   end
 
-  describe " as single letter" do
+  describe "a single letter" do
     it "should cipher by 3" do
       translation = @cipher.translate('a', 3)
       translation.should == 'd'
