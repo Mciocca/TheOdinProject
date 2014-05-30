@@ -15,12 +15,14 @@ loop {
 
    if method == 'GET' && location == '/index.html' || location == '/' 
      body = (File.read('index.html'))
-     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: #{File.extname('index.html')}\nContent-Length: #{body.size}\n\n "
+     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: text/html\nContent-Length: #{body.size}\n\n "
      client.puts headers + body
    end
 
    if location == '/style.css'
-     client.puts File.read('style.css')
+     body = File.read('style.css')
+     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: text/css\nContent-Length: #{body.size}\n\n "
+     client.puts headers + body 
    end
 
    if location == '/favicon.ico'
@@ -28,14 +30,21 @@ loop {
    end
 
    if method == ('POST') 
-     info = JSON.parse(req[2])
+     info = JSON.parse(req[-1])
+     puts info
      name = info['person']['name']
      email = info['person']['email']
      body = File.read("thanks.html").gsub("<%= yield %>", "<li>Name : #{name} </li>\n                <li>Email : #{email}</li>")
-     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: #{File.extname('index.html')}\nContent-Length: #{body.size}\n\n "
+     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: text/html\nContent-Length: #{body.size}\n\n "
      client.puts headers + body 
    end
 
+   if method == ('GET') && location == '/new'
+     body = 'Hello World!'
+     headers = "HTTP/1.0 200 OK\nDate: #{Time.now}\nContent-Type: text/html\nContent-Length: #{body.size + 1}\n\n "
+     client.puts headers + body
+   end
+   
     client.close
   end                 
 }

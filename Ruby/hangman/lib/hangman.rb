@@ -82,6 +82,7 @@ module Hangman
     
     def self.generate_word
       words = File.open('./5desk.txt', 'r') { |f| filter_words(f) }
+      puts "Choosing a word from #{words.length} words"
       words[rand(0..words.length)].downcase
     end
 
@@ -167,5 +168,5 @@ module Hangman
     end
   #end game
   end
-
+#end Hangman module
 end

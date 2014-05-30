@@ -2,10 +2,16 @@
 <head>
 	<title>This is a web page</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
+
   <h1>Welcome to the Viking Home Page</h1>
   <div id = "secret"></div>
+
+
+
+  <a href="/index.html">index</a>
 
   <script type="text/javascript">
     el = document.getElementById('secret')
@@ -16,6 +22,9 @@
       el.style.backgroundColor = "rgb("+red+","+green+","+blue+")"
     }
     el.addEventListener("mouseover", changeBackground, false)
+    $('.form').submit(function(){
+       $(this).serailize();
+    });
   </script>
 
 </body>

@@ -32,4 +32,3 @@ socket.puts headers if method == "GET"
 puts socket.read
 
 socket.close
-
